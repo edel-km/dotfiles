@@ -20,7 +20,7 @@
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
   boot = {
-    kernelPackages = pkgs.linuxPackages_5_15;
+    kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
     loader = {
       grub = {
         enable = true;
@@ -33,7 +33,21 @@
     };
   };
 
-  # nix.extraOptions = ''experimental-features = nix-command flakes'';
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    maxJobs = 4;
+    autoOptimiseStore = true;
+
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
