@@ -11,8 +11,8 @@
   inputs =
     {
       # Core dependencies
-      nixpkgs.url = "nixpkgs/nixos-unstable;
-      nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable;
+      nixpkgs.url = "nixpkgs/nixos-unstable";
+      nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
       home-manager.url = "github:rycee/home-manager/master";
       home-manager.inputs.nixpkgs.follows = "nixpkgs";
     };
