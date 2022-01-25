@@ -142,7 +142,7 @@
     neofetch
     htop
     # Terminals
-    alacritty
+    st
     # Tools
     git
     wget
