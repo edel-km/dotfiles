@@ -1,8 +1,8 @@
-# flake.nix
+# flake.nix		
 # 
 # Author:		Manuel Kostelecky <contact.me@kostelecky.at>
-# URL:		https://github.com/kostelem/dotfiles
-# License:	MIT
+# URL:			https://github.com/kostelem/dotfiles
+# License:		MIT
 
 {
 
@@ -21,8 +21,14 @@
     nixosConfigurations.bifroest = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = 
-        [ (import ./configuration.nix) ];
+        [ (import ./hosts/bifroest/configuration.nix) ];
       specialArgs = { inherit inputs; };
+    };
+    nixosConfigurations.darwin-vm = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules =
+        [ (import ./hosts/darwin-vm/configuration.nix) ];
+	specialArgs = { inherit inputs; };
     };
   };
 }
